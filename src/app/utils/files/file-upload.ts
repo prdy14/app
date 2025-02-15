@@ -13,7 +13,7 @@ export const uploadFile = async (assetType: AssetType, file: File) => {
     );
     const { presignedUrl } = await response.json();
     try {
-      const res = await fetch(presignedUrl, {
+      await fetch(presignedUrl, {
         method: "PUT",
         body: file,
         headers: {
