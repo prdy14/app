@@ -1,5 +1,6 @@
 import s3Client from "src/lib/s3";
-import s3 from "@aws-sdk/client-s3";
+
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -15,7 +16,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const command = new s3.PutObjectCommand({
+  const command = new PutObjectCommand({
     Bucket: process.env.RGB_SPLITTING_BUCKET_NAME!,
     Key: objectKey,
   });
